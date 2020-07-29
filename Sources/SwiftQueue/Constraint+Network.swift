@@ -21,9 +21,6 @@
 // SOFTWARE.
 
 import Foundation
-#if os(iOS) || os(macOS) || os(tvOS)
-import Reachability
-#endif
 
 /// Kind of connectivity required for the job to run
 public enum NetworkType: Int, Codable {
@@ -41,7 +38,7 @@ internal final class NetworkConstraint: SimpleConstraint, CodableConstraint {
     /// Require a certain connectivity type
     internal let networkType: NetworkType
 
-    private var reachability: Reachability?
+    private var reachability: ReachabilitySwift?
 
     required init(networkType: NetworkType) {
         assert(networkType != .any)
@@ -57,7 +54,7 @@ internal final class NetworkConstraint: SimpleConstraint, CodableConstraint {
 
     override func willSchedule(queue: SqOperationQueue, operation: SqOperation) throws {
         assert(operation.dispatchQueue != .main)
-        self.reachability = try Reachability(targetQueue: operation.dispatchQueue, notificationQueue: operation.dispatchQueue)
+        self.reachability = try ReachabilitySwift(targetQueue: operation.dispatchQueue, notificationQueue: operation.dispatchQueue)
     }
 
     override func run(operation: SqOperation) -> Bool {
@@ -85,7 +82,7 @@ internal final class NetworkConstraint: SimpleConstraint, CodableConstraint {
         }
     }
 
-    private func hasCorrectNetwork(reachability: Reachability) -> Bool {
+    private func hasCorrectNetwork(reachability: ReachabilitySwift) -> Bool {
         switch networkType {
         case .any:
             return true

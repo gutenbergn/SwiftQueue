@@ -17,11 +17,10 @@ Pod::Spec.new do |s|
 
   s.requires_arc = true
 
+  s.framework    = 'SystemConfiguration'
+  s.ios.framework    = 'CoreTelephony'
+
   s.source_files = 'Sources/SwiftQueue/**.swift'
   s.ios.source_files   = 'Sources/ios/*.swift', 'Sources/SwiftQueue/**.swift'
-  
-  s.ios.dependency 'ReachabilitySwift', '~> 5.0'
-  s.tvos.dependency 'ReachabilitySwift', '~> 5.0'
-  s.osx.dependency 'ReachabilitySwift', '~> 5.0'
   
 end
