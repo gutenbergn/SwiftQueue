@@ -141,7 +141,7 @@ public final class SqOperationQueue: OperationQueue {
         job.remove()
     }
 
-    func createHandler(type: String, params: [String: Any]?) -> Job {
+    func createHandler(type: String, params: [String: Any?]?) -> Job {
         return creator.create(type: type, params: params)
     }
 

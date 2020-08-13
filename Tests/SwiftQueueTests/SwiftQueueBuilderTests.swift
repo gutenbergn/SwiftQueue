@@ -161,7 +161,7 @@ class SwiftQueueBuilderTests: XCTestCase {
 
     public func testBuilderWithFreeArgs() {
         let type = UUID().uuidString
-        let params: [String: Any] = [UUID().uuidString: [UUID().uuidString: self]]
+        let params: [String: Any?] = [UUID().uuidString: [UUID().uuidString: self]]
 
         let creator = TestCreator([type: TestJob()])
         let manager = SwiftQueueManagerBuilder(creator: creator)

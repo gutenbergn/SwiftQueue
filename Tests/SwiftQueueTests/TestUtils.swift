@@ -157,7 +157,7 @@ class TestCreator: JobCreator {
         self.job = job
     }
 
-    func create(type: String, params: [String: Any]?) -> Job {
+    func create(type: String, params: [String: Any?]?) -> Job {
         return job[type]!
     }
 }

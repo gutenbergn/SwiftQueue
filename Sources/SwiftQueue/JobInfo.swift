@@ -33,7 +33,7 @@ public struct JobInfo {
     public var queueName: String
 
     /// Custom params set by the user
-    public var params: [String: Any]
+    public var params: [String: Any?]
 
     /// This value is used to influence the order in which operations are dequeued and executed
     public var priority: Operation.QueuePriority
@@ -67,7 +67,7 @@ public struct JobInfo {
          createTime: Date,
          priority: Operation.QueuePriority,
          qualityOfService: QualityOfService,
-         params: [String: Any],
+         params: [String: Any?],
          constraints: [JobConstraint]
     ) {
         self.type = type
@@ -97,7 +97,7 @@ extension JobInfo: Codable {
 
         let type = try container.decode(String.self, forKey: .type)
         let queueName = try container.decode(String.self, forKey: .queueName)
-        let params: [String: Any] = try container.decode([String: Any].self, forKey: .params)
+        let params: [String: Any?] = try container.decode([String: Any?].self, forKey: .params)
         let priority: Int = try container.decode(Int.self, forKey: .priority)
         let qualityOfService: Int = try container.decode(Int.self, forKey: .qualityOfService)
         let createTime = try container.decode(Date.self, forKey: .createTime)

@@ -128,7 +128,7 @@ public final class JobBuilder {
     }
 
     /// Custom parameters will be forwarded to create method
-    public func with(params: [String: Any]) -> Self {
+    public func with(params: [String: Any?]) -> Self {
         info.params = params
         return self
     }

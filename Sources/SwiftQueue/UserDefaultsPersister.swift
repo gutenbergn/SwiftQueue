@@ -36,7 +36,7 @@ public class UserDefaultsPersister: JobPersister {
     // Structure as follow
     // [group:[id:data]]
     public func restore() -> [String] {
-        let values: [String: Any] = store.value(forKey: key) as? [String: Any] ?? [:]
+        let values: [String: Any?] = store.value(forKey: key) as? [String: Any?] ?? [:]
         return Array(values.keys)
     }
 
